@@ -3,7 +3,7 @@ from BancoLib import Banco
 
 def imprimeMenu():
     print("Menu")
-    print("0 - Sair")
+    print("0 - Salvar e Sair")
     print("1 - Criar uma Nova Conta")
     print("2 - Consultar Saldo Conta")
     print("3 - Depositar na Conta")

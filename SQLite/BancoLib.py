@@ -1,7 +1,6 @@
 import random
 from sqlData import DadosBanco
 
-
 class Conta():
     def __init__(self, numConta, saldo = 0):
         self.numero = numConta
