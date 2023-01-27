@@ -1,10 +1,11 @@
 import random
+from sqlData import DadosBanco
 
 
 class Conta():
-    def __init__(self, numConta):
+    def __init__(self, numConta, saldo = 0):
         self.numero = numConta
-        self.saldo = 0
+        self.saldo = saldo
 
     def deposite(self, valor):
         self.saldo = self.saldo + valor
@@ -20,8 +21,16 @@ class Conta():
 class Banco():
     def __init__(self, nome):
         self.nome = nome
+        self.dados = DadosBanco()
+        self.dados.criarTabelaDB()
         self.contas = []
 
+    def carregarContas(self):
+        clientes = self.dados.carregarDadosCliente()
+
+        for cliente in clientes:
+            self.contas.append(Conta(cliente['conta'], cliente['saldo']))
+    
     def getNome(self):
         return self.nome
 
@@ -46,3 +55,7 @@ class Banco():
         for conta in self.contas:
             if conta.numero == numConta:
                 return conta.sacar(valor)
+    
+    def encerrarConexao(self):
+        self.dados.escreverDadosCliente(self.contas)
+        self.dados.fecharConexaoDB()

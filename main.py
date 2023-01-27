@@ -12,6 +12,7 @@ def imprimeMenu():
 
 print("Bem-vindo")
 bancoUfrpe = Banco("UABJ")
+bancoUfrpe.carregarContas()
 imprimeMenu()
 escolha = int(input("digite a opção desejada:"))
 while escolha > 0:
@@ -42,3 +43,5 @@ while escolha > 0:
             print("Saldo Insuficiente")
     imprimeMenu()
     escolha = int(input("digite a opção desejada:"))
+
+bancoUfrpe.encerrarConexao()
